@@ -1,0 +1,89 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' ,fullScreenBackdrop: true}"></ngx-loading>
+<div *ngIf="true">
+    <div class="form-group clearfix"></div>
+    <div class="table-responsive">
+        <mat-card>
+            <mat-card-title>Questions</mat-card-title>
+            <mat-card-content>
+                <mat-card>
+                    <mat-card-content>
+                        <div *ngIf="categoryId > 0">
+                            <button mat-button (click)="openQuestionDialog(categoryId)" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>
+                                        Add Question</button>
+                        </div>
+
+                        <mat-form-field class="search-field-full-width">
+                            <textarea matInput placeholder="type something..." [(ngModel)]="filterText" #filterTextArea></textarea>
+                        </mat-form-field>
+
+                        <div *ngIf="filterTextArea">
+                            You searched for <strong> {{filterText}}</strong>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+                <mat-accordion>
+
+                    <mat-expansion-panel *ngFor="let question of questions | questionFilter: filterText  | slice:(pager.currentPage-1)*pager.pageSize:((pager.currentPage-1)*pager.pageSize)+pager.pageSize ; let i=index">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{question.question}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Number of answers : {{question.answerDtos.length}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <div class="row">
+                            <button mat-button (click)="openAnswerDialog(question.id, question.question, question.answerDtos)" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>
+                                        ADD/UPDATE/DELETE</button>
+                        </div>
+
+                        <div class="panel panel-default" *ngIf="question.answerDtos.length>0;else todoEmptyTmpl">
+                            <div class="panel-heading">{{question.question}}</div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Answer</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let answer of question.answerDtos; let i=index" [style.display]="!answer.deleted ? '' : 'none'">
+                                        <td>{{ i + 1 }}</td>
+                                        <td>{{ answer.answer }}</td>
+                                        <td>
+                                            <a class="btn btn-xs" style="font-size: 17px">
+                                                <div>{{ answer.result }}</div>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <nav aria-label="Page Navigation">
+                    <ul class="pagination">
+                        <li *ngFor="let page of pager.pageList" [class.active]="page===pager.currentPage">
+                            <a style="cursor: pointer;" (click)="setPage(page)">{{page}}</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </mat-card-content>
+        </mat-card>
+        <ng-template #questionNotEmptyContent>
+
+        </ng-template>
+
+        <ng-template #todoEmptyTmpl>
+            <div class="alert alert-danger" role="alert">
+                Answer is empty!
+            </div>
+        </ng-template>
+
+    </div>
+</div>

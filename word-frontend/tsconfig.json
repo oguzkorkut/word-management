@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },"include": [
+    "src/**/*"
+   
+    //"node_modules/ngx-toastr/toastr.css",
+    //"node_modules/jqwidgets-framework/jqwidgets-ts/**/*"
+]
+//,
+//"files": [
+   // Here you must include all the <code>.ts</code> files you are using from the jQWidgets library.
+ // "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid.ts"
+ // "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxchart.ts"
+  // "node_modules/ngx-toastr/toastr.css",
+    //"node_modules/jqwidgets-framework/jqwidgets-ts/**/*"
+//]
+}

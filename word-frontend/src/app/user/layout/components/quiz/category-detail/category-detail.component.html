@@ -1,0 +1,20 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' ,fullScreenBackdrop: true}"></ngx-loading>
+<div *ngIf="true">
+    <div class="form-group clearfix"></div>
+    <div class="table-responsive">
+        <div class="table-responsive">
+            <button routerLink="/user/category-operations/categories/add-category" class="btn btn-xs btn-primary pull-left">
+                      <i class="glyphicon glyphicon-plus"></i>
+                      Add Category
+                  </button>
+            <h4 class="page-header">
+                Categories</h4>
+            <div class="list-group">
+                <a class="list-group-item" (click)="onSelect()" routerLink="/user/category-operations/categories/category-detail">All</a>
+                <a class="list-group-item" (click)="onSelect(category)" *ngFor="let category of categories" routerLink="/user/category-operations/categories/category-detail/{{category.id}}">
+                    {{category.category}}
+                  </a>
+            </div>
+        </div>
+    </div>
+</div>

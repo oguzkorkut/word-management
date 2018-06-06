@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="text-center">
+            <div class="logo"></div>
+        </div>
+        <p class="navbar-text navbar-right">User <a href="/logout" class="navbar-link">Çıkış</a></p>
+    </div>
+</nav>
+<div class="container-fluid">
+    <ul class="nav nav-tabs">
+        <li [ngClass]="activeTab === 'dashboard' ? 'active' : ''">
+            <a routerLink="/user/dashboard" (click)="setActive('dashboard')">Dashboard</a>
+        </li>
+        <li [ngClass]="activeTab === 'XTab' ? 'active' : ''">
+            <a routerLink="/user/XTab" (click)="setActive('XTab')">XTab</a>
+        </li>
+        <li [ngClass]="activeTab === 'YTab' ? 'active' : ''">
+            <a routerLink="/user/YTab" (click)="setActive('YTab')">YTab</a>
+        </li>
+        <li [ngClass]="activeTab === 'YTab' ? 'active' : ''">
+            <a routerLink="/user/YTab" (click)="setActive('YTab')">YTab</a>
+        </li>
+    </ul>
+
+</div>

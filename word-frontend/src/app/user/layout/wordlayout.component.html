@@ -1,0 +1,106 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' ,fullScreenBackdrop: true}"></ngx-loading>
+<mat-toolbar role="header" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()" class="menu-btn">
+    <mat-icon>menu</mat-icon>
+  </button>
+    <div class="text-center">
+        <div class="logo"></div>
+    </div>
+    <!--<div class="fon-container" *ngIf="operationName">
+        İşlem Adı : {{operationName}}
+    </div>-->
+    <div class="fon-container">
+        İşlem Adı : {{operationName}}
+    </div>
+    <div class="pull-right user-info">
+        Hoş geldiniz, {{username}}
+        <a href="/logout">Çıkış</a>
+
+    </div>
+</mat-toolbar>
+<mat-sidenav-container class="example-sidenav-container min720 " [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" (closed)="toggle()" (keydown.escape)="close()">
+        <mat-nav-list *ngIf="menuList">
+            <a mat-list-item (click)="openLink()" routerLink="/user/dashboard">Ana Menü</a>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title mat-list-item>
+                            Kullanıcı İşlemler
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let ppxMenu of menuList">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title mat-list-item>
+                                    {{ppxMenu.name}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <a mat-list-item *ngFor="let subMenu of ppxMenu.subMenu" (click)="openLink(subMenu.name) " [routerLink]=" '/user/' + ppxMenu.shortName + '/' + subMenu.shortName + '/' + subMenu.name ">{{subMenu.name}}</a>
+                            <!--    <a mat-list-item (click)="openLink(ppxMenu.shortname) " [routerLink]=" '/user/submenu/' + ppxMenu.shortname ">{{ppxMenu.name}}</a>
+                            <a mat-list-item (click)="openLink(ppxMenu.shortname) " [routerLink]=" '/user/submenu/' + ppxMenu.shortname ">{{ppxMenu.name}}</a>-->
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title mat-list-item>
+                            Quiz
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let quizMenu of quizList">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title mat-list-item>
+                                    {{quizMenu.name}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <a mat-list-item *ngFor="let subMenu of quizMenu.subMenu" (click)="openLink(subMenu.name) " [routerLink]=" '/user/' + quizMenu.shortName + '/' + subMenu.shortName">{{subMenu.name}}</a>
+                            <!--    <a mat-list-item (click)="openLink(ppxMenu.shortname) " [routerLink]=" '/user/submenu/' + ppxMenu.shortname ">{{ppxMenu.name}}</a>
+                            <a mat-list-item (click)="openLink(ppxMenu.shortname) " [routerLink]=" '/user/submenu/' + ppxMenu.shortname ">{{ppxMenu.name}}</a>-->
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title mat-list-item>
+                            Kelimelik
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let wordMenu of wordList">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title mat-list-item>
+                                    {{wordMenu.name}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <a mat-list-item *ngFor="let subMenu of wordMenu.subMenu" (click)="openLink(subMenu.name) " [routerLink]=" '/user/' + wordMenu.shortName + '/' + subMenu.shortName">{{subMenu.name}}</a>
+                            <!--    <a mat-list-item (click)="openLink(ppxMenu.shortname) " [routerLink]=" '/user/submenu/' + ppxMenu.shortname ">{{ppxMenu.name}}</a>
+                                <a mat-list-item (click)="openLink(ppxMenu.shortname) " [routerLink]=" '/user/submenu/' + ppxMenu.shortname ">{{ppxMenu.name}}</a>-->
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <a mat-list-item (click)="openLink() " routerLink="/user/functions ">Tanımlamalar</a>
+            <a mat-list-item (click)="openLink() " routerLink="/user/system-parameters ">Sistem Parametreleri</a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container-fluid clearfix" *ngIf="menuList">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer>
+</app-footer>
+
+<!--
+<simple-notifications [options]="options"></simple-notifications>-->

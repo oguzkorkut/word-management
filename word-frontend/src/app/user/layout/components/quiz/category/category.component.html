@@ -1,0 +1,32 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' ,fullScreenBackdrop: true}"></ngx-loading>
+<div *ngIf="true">
+    <div class="form-group clearfix"></div>
+    <div class="table-responsive">
+        <div class="col-md-5">
+
+            <h4 class="page-header">Add Category</h4>
+
+            <form #categoryForm="ngForm" (ngSubmit)="checkout(categoryForm)">
+                <div class="form-group" [class.has-error]="categoryName.invalid&&categoryName.dirty">
+                    <label class="control-label" for="categoryName">Category</label>
+                    <input #categoryName="ngModel" type="text" class="form-control" id="categoryName" name="categoryName" [(ngModel)]="model.category" required>
+                    <span *ngIf="categoryName.invalid&&categoryName.dirty" class="help-block">Category is required</span>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                              <input type="checkbox" name="active" [(ngModel)]="model.active">Is Active?
+                          </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" [disabled]="categoryForm.invalid">Save</button>
+            </form>
+        </div>
+        <div class="col-md-5">
+            <button routerLink="/user/category-operations/categories" class="btn btn-xs btn-primary pull-left">
+                            <i class="glyphicon glyphicon glyphicon-arrow-left"></i>
+                            Back Categories
+                        </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~ngx-toastr/toastr.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/*@import "~ngx-toastr/toastr-bs4-alert";*/
+
+
+/*@import '~ngx-toastr/toastr';
+
+@import '~jqwidgets-framework/jqwidgets/styles/jqx.base.css';
+@import '~jqwidgets-framework/jqwidgets/styles/jqx.web.css';*/
+
+
+/*@import '~jqwidgets-framework/jqwidgets/styles/jqx.base.css';
+@import '~jqwidgets-framework/jqwidgets/styles/jqx.office.css';
+@import '~jqwidgets-framework/jqwidgets/styles/jqx.web.css';
+@import '~jqwidgets-framework/jqwidgets/styles/jqx.light.css';
+@import '~jqwidgets-framework/jqwidgets/styles/jqx.dark.css';
+@import '~jqwidgets-framework/jqwidgets/styles/jqx.darkblue.css';*/
+
+.nav-tabs {
+    margin: 20px 0 0 0;
+}
+
+.nav-tabs li a {
+    color: #444;
+    font-weight: 700;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    color: #e34b59;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}

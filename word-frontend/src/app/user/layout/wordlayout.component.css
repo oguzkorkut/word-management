@@ -1,0 +1,131 @@
+.logoMin90 {}
+
+.logo {
+    background: url(word.jpg) no-repeat;
+    width: 159px;
+    height: 40px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    margin-left: -79px;
+}
+
+.menu-btn {
+    border-radius: 4px;
+    padding: 7px 8px 0 8px;
+    margin: 5px 0 5px 0;
+    height: 38px;
+    color: #666;
+    background: transparent;
+    border: 0;
+}
+
+.menu-btn:focus,
+.menu-btn:active {
+    outline: none;
+}
+
+.user-info {
+    font-size: 14px;
+    color: #555;
+    font-weight: 100;
+}
+
+.user-info a {
+    text-decoration: underline;
+    font-weight: bold;
+    padding: 0 0 0 5px;
+    color: #000;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 600px;
+}
+
+.text-center {
+    width: 100%;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+}
+
+.example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    height: 50px;
+}
+
+.min720 {
+    min-height: 720px;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]),
+.mat-nav-list a {
+    box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+    padding: 0 18px 0 18px;
+}
+
+.mat-expansion-panel-body {
+    padding: 10px 18px 10px 18px !important;
+}
+
+.example-toolbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 55px;
+    z-index: 101;
+    border-bottom: 1px solid #c7c7c7;
+    background: #fff;
+    box-shadow: 0 5px 5px #d1d1d1;
+}
+
+.example-sidenav-container {
+    padding-top: 50px;
+    border-right: 1px solid #c7c7c7;
+}
+
+.mat-sidenav {
+    margin-top: 55px;
+    position: fixed;
+}
+
+.fon-container {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    background: #f2f2f2;
+    color: #555;
+    font-size: 14px;
+    padding: 0 10px;
+    margin: 0 10px 0 0;
+    height: 35px;
+}

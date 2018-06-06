@@ -1,0 +1,72 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' ,fullScreenBackdrop: true}"></ngx-loading>
+<div *ngIf="true">
+
+    <div class="form-group clearfix">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">{{title}}</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+
+        <div>
+            <!-- <app-logged>You are not logged in!</app-logged> -->
+            <div class="col-md-3">
+                <div class="table-responsive">
+                    <button routerLink="add-category" class="btn btn-xs btn-primary pull-left">
+                      <i class="glyphicon glyphicon-plus"></i>
+                      Add Category
+                  </button>
+                    <h4 class="page-header">
+                        Categories</h4>
+                    <div class="list-group">
+
+                        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="category-question-detail" (click)="onSelect()" class="list-group-item">All</a>
+                        <a class="list-group-item" (click)="onSelect(category)" routerLinkActive="active" *ngFor="let category of categories" routerLink="category-question-detail/{{category.id}}">
+                    {{category.category}}
+                  </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
