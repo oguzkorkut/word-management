@@ -25,8 +25,7 @@ export class LevelComponent implements OnInit {
   levels: Level[] = [];
 
   constructor(private route: ActivatedRoute,private wordService: WordService, 
-    private notificationsService: NotificationsService, private activatedRoute: ActivatedRoute,
-    public dialog: MatDialog) { }
+    private notificationsService: NotificationsService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -110,7 +109,7 @@ export class LevelComponent implements OnInit {
   }
 
   addLevel(level: Level){
-    this.wordService.saveLevel(level).subscribe(
+    this.wordService.addLevel(level).subscribe(
       response  => {
         console.log(response )
         this.notificationsService.info('Successfull','Level is saved!');

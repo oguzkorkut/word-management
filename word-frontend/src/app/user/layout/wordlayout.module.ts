@@ -1,5 +1,4 @@
 import { AddLevelDialogPanelComponent } from './components/word/level/add-level-dialog-panel/add-level-dialog-panel.component';
-import { LevelFilterPipe } from './components/word/level-filter.pipe';
 import { CategoryComponent } from './components/quiz/category/category.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +21,7 @@ import { AddRoleComponent } from './components/add-role/add-role.component';
 import { RoleMappingComponent } from './components/role-mapping/role-mapping.component';
 import { CategoryDetailComponent } from './components/quiz/category-detail/category-detail.component';
 import { CategoryQuestionDetailComponent } from './components/quiz/category-question-detail/category-question-detail.component';
-import { QuestionFilterPipe } from './components/quiz/category-question-detail/question-filter.pipe';
+
 import { AnswerDetailDialogPanel } from './components/quiz/category-question-detail/answer-dialog/answer-detail-dialog-panel';
 import { QuestionDetailDialogPanel } from './components/quiz/category-question-detail/question-dialog/question-detail-dialog-panel';
 import { AddWordComponent } from './components/word/word/add-word/add-word.component';
@@ -30,6 +29,10 @@ import { LevelComponent } from './components/word/level/level.component';
 import { WordComponent } from './components/word/word/word.component';
 import { LevelMappingComponent } from './components/word/level/level-mapping/level-mapping.component';
 import { WordService } from '../../service/word.service';
+import { WordsOfLevelsComponent } from './components/word/word/words-of-levels/words-of-levels.component';
+import { LevelFilterPipe } from '../../pipe/level-filter.pipe';
+import { QuestionFilterPipe } from '../../pipe/question-filter.pipe';
+import { WordFilterPipe } from '../../pipe/word-filter.pipe';
 //import { CategoryQuestionDetailComponent } from './components/quiz/category-question-detail/category-question-detail.component';
 
 @NgModule({
@@ -54,7 +57,6 @@ import { WordService } from '../../service/word.service';
     CategoryDetailComponent,
     CategoryComponent,
     CategoryQuestionDetailComponent,
-    QuestionFilterPipe,
     AnswerDetailDialogPanel,
     QuestionDetailDialogPanel,
     AddLevelDialogPanelComponent,
@@ -62,7 +64,10 @@ import { WordService } from '../../service/word.service';
     LevelComponent,
     WordComponent,
     LevelMappingComponent,
-    LevelFilterPipe
+    WordsOfLevelsComponent,
+    LevelFilterPipe,
+    QuestionFilterPipe,
+    WordFilterPipe
   ],
   providers: [
     WordService

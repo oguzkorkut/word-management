@@ -13,7 +13,6 @@ import org.springframework.util.CollectionUtils;
 
 import com.word.dao.ILevelDao;
 import com.word.dto.LevelDto;
-import com.word.dto.WordDto;
 import com.word.factory.WordFactory;
 import com.word.model.Level;
 
@@ -46,8 +45,17 @@ public class LevelSericeImpl implements ILevelSerice {
 
 	@Override
 	public boolean update(LevelDto levelDto) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		
+		if (levelDto == null) {
+			logger.error("save level -> levelDto is null");
+			return false;
+		}
+		
+		Level level = wordFactory.convertLevelDtoToLevel(levelDto);
+		
+		boolean control = levelDao.update(level);
+		
+		return control;
 	}
 
 	@Override
@@ -73,28 +81,9 @@ public class LevelSericeImpl implements ILevelSerice {
 	}
 
 	@Override
-	public List<WordDto> getWordsByLevelId(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public LevelDto getLevelByLevel(int level) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
-
-	@Override
-	public boolean save(WordDto wordDto) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public WordDto getWordByName(String name) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

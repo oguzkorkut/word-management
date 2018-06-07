@@ -16,6 +16,14 @@ public class WordDto implements Serializable {
 	public WordDto() {
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -54,14 +62,6 @@ public class WordDto implements Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 }

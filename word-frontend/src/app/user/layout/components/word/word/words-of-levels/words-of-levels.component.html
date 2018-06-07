@@ -3,13 +3,30 @@
     <div class="form-group clearfix"></div>
     <div class="table-responsive">
         <mat-card>
-            <mat-card-title>Levels</mat-card-title>
+            <mat-card-title>Words</mat-card-title>
             <mat-card-content>
                 <mat-card>
                     <mat-card-content>
                         <div>
-                            <button mat-button (click)="openAddLevel()" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>
-                                        Add Level</button>
+                            <div class="row">
+                                <!-- /.col-lg-6 -->
+                                <div class="col-lg-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" #wordText (keyup.enter)="add(wordText)">
+                                        <!--<span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" (click)="openAddWord(wordText)">Ekle</button>
+                                          </span>-->
+                                        <span class="input-group-btn">
+                                          <button mat-button (click)="add(wordText)" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>
+                                            Add</button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                                <!-- /.col-lg-6 -->
+                            </div>
+
+
                         </div>
 
                         <mat-form-field class="search-field-full-width">
@@ -28,29 +45,25 @@
                                 ADD/UPDATE/DELETE</button>
                 </div>-->
 
-                <div class="panel panel-default" *ngIf="levels.length>0;else levelEmptyTmpl">
-                    <div class="panel-heading">Level</div>
+                <div class="panel panel-default" *ngIf="words.length>0;else wordEmptyTmpl">
+                    <div class="panel-heading">Word</div>
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Level</th>
+                                <th>-</th>
+                                <th>-</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let level of levels | levelFilter: filterText  | slice:(pager.currentPage-1)*pager.pageSize:((pager.currentPage-1)*pager.pageSize)+pager.pageSize ; let i=index">
+                            <tr *ngFor="let word of words | wordFilter: filterText  | slice:(pager.currentPage-1)*pager.pageSize:((pager.currentPage-1)*pager.pageSize)+pager.pageSize ; let i=index">
                                 <td>{{ i + 1 }}</td>
                                 <td>
-                                    <a class="btn btn-xs" style="font-size: 17px" [routerLink]=" '/user/word/word-operations/level/' + level.level">
-                                        <div>{{ level.name }}</div>
-                                    </a>
+                                    {{ word.name }}
                                 </td>
-                                <td>
-                                    <a class="btn btn-xs" style="font-size: 17px" [routerLink]=" '/user/word/word-operations/level/' + level.level">
-                                        <div>{{ level.level }}</div>
-                                    </a>
-                                </td>
+                                <td><button class="btn btn-danger" (click)="update(word.id)">Update</button></td>
+                                <td><button class="btn btn-danger" (click)="delete(word.id)">Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -67,9 +80,9 @@
             </mat-card-content>
         </mat-card>
 
-        <ng-template #levelEmptyTmpl>
+        <ng-template #wordEmptyTmpl>
             <div class="alert alert-danger" role="alert">
-                Level is empty!
+                Word is empty!
             </div>
         </ng-template>
 

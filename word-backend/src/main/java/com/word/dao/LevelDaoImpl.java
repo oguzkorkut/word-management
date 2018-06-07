@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.word.model.Level;
-import com.word.model.Word;
 import com.word.repository.LevelRepository;
 
 @Service("levelDao")
@@ -89,21 +88,24 @@ public class LevelDaoImpl implements ILevelDao {
 	}
 
 	@Override
-	public List<Word> getWordsByLevelId(int id) throws Exception {
+	public Level getLevelById(int id) throws Exception {
 		
-		return null;
-	}
+		if (logger.isTraceEnabled()) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("getLevelById begins. id: ");
+			sb.append(id);
+			logger.trace(sb.toString());
+		}
+		Level l = levelRepository.findOne(id);
 
-	@Override
-	public boolean save(Word word) throws Exception {
+		if (logger.isTraceEnabled()) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("getLevelById ends. ID: ");
+			sb.append(l!=null?true:false);
+			logger.trace(sb.toString());
+		}
 		
-		return false;
-	}
-
-	@Override
-	public Word getWordByName(String name) throws Exception {
-		
-		return null;
+		return l;
 	}
 
 

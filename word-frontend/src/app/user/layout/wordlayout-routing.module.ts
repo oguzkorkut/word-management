@@ -1,3 +1,4 @@
+import { WordsOfLevelsComponent } from './components/word/word/words-of-levels/words-of-levels.component';
 import { WordComponent } from './components/word/word/word.component';
 import { CategoryComponent } from './components/quiz/category/category.component';
 import { AddRoleComponent } from './../../user/layout/components/add-role/add-role.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'word/level-operations/level-mapping', component: LevelMappingComponent},
 
       { path: 'word/word-operations/all-words', component: WordComponent},
+      { path: 'word/word-operations/level/:level', component: WordsOfLevelsComponent},
 
       { path: 'logout', component: UserLogoutComponent }
     ]
