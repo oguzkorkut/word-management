@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Level } from '../../../../model/Level';
+import { Level } from '../model/Level';
+
 
 
 
