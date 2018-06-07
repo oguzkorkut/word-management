@@ -12,7 +12,9 @@ export class LevelFilterPipe implements PipeTransform {
 
     levelNo = levelNo ? levelNo : 0;
 
-    return levelNo ? value.filter((p: Level) => p.level != levelNo  ) : value;
+    levelNo = Number(levelNo)
+
+    return levelNo != 0 ? value.filter((p: Level) => p.level == levelNo  ) : value;
   }
 
 }

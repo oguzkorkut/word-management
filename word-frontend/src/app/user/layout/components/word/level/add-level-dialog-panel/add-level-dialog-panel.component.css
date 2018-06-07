@@ -1,0 +1,8 @@
+.level-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-container>* {
+    width: 100%;
+}

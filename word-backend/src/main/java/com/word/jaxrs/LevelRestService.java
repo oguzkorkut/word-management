@@ -77,6 +77,7 @@ public class LevelRestService {
 	
 	@POST
 	@Path("/save")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response saveWord(@Context HttpServletRequest request, WordDto wordDto) {

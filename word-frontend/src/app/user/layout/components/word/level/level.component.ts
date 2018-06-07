@@ -1,4 +1,4 @@
-import { AddLevelComponent } from './add-level/add-level.component';
+import { AddLevelDialogPanelComponent } from './add-level-dialog-panel/add-level-dialog-panel.component';
 import { Level } from './../../../../../model/Level';
 import { WordService } from './../../../../../service/word.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,7 @@ export class LevelComponent implements OnInit {
 
   public loading = false;
 
-  filterText: number = 0;
+  filterText: number;
 
   pager: AppPager = new AppPager();
 
@@ -46,17 +46,39 @@ export class LevelComponent implements OnInit {
   }
 
   openAddLevel(){
-    let dialogRef = this.dialog.open(AddLevelComponent, {
+    var lastLevel = this.getLastLevel();
+
+    let tempLevel = new Level;
+    tempLevel.active = true;
+    tempLevel.level = lastLevel + 1;
+    tempLevel.name = "";
+    tempLevel.words = [];
+
+    let dialogRef = this.dialog.open(AddLevelDialogPanelComponent, {
       width: '400px',
-      data: null
+      data: tempLevel
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(result){
-       console.log("");
+       console.log(result);
+       this.addLevel(result);
       }
     });
+  }
+
+  getLastLevel():number{
+    var lastLevel = 0;
+
+    if(this.levels){
+      this.levels.forEach(l => {
+        if(l.level > lastLevel){
+          lastLevel = l.level;
+        }
+      });
+    }
+    return lastLevel;
   }
 
 
@@ -79,8 +101,7 @@ export class LevelComponent implements OnInit {
       if(response.result){
         this.levels = response.result as Level[];
         this.pager = this.getPager(this.levels.length,1,3);
-      }
-      
+      }      
     },
     error =>{
       console.log(error);

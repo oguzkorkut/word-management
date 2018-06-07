@@ -15,7 +15,7 @@ import com.word.model.Category;
 import com.word.model.Question;
 
 @Service("quizFactory")
-public class Factory {
+public class QuizFactory {
 
 	public CategoryDto convertCategoryToCategoryDto(Category category) {
 		CategoryDto categoryDto = new CategoryDto();

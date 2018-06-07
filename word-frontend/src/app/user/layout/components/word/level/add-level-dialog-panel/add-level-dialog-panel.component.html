@@ -4,17 +4,13 @@
         <input matInput [(ngModel)]="data.categoryId">
     </mat-form-field>-->
 
-    <div class="answer-container">
-        <!-- <mat-form-field>
-            <input matInput [(ngModel)]="data.categoryId">
-        </mat-form-field>-->
-
+    <div class="level-container">
         <mat-form-field [hideRequiredMarker]="true">
-            <textarea matInput [(ngModel)]="data.name" placeholder="Level Name" required></textarea>
+            <textarea matInput [(ngModel)]="data.level" required readonly></textarea>
         </mat-form-field>
 
-        <mat-form-field>
-            <textarea matInput [(ngModel)]="data.level" required></textarea>
+        <mat-form-field [hideRequiredMarker]="true">
+            <textarea matInput [(ngModel)]="data.name" placeholder="Level name" required></textarea>
         </mat-form-field>
     </div>
 </div>

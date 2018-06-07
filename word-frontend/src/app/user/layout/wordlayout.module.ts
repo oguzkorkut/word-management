@@ -1,3 +1,4 @@
+import { AddLevelDialogPanelComponent } from './components/word/level/add-level-dialog-panel/add-level-dialog-panel.component';
 import { LevelFilterPipe } from './components/word/level-filter.pipe';
 import { CategoryComponent } from './components/quiz/category/category.component';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,6 @@ import { CategoryQuestionDetailComponent } from './components/quiz/category-ques
 import { QuestionFilterPipe } from './components/quiz/category-question-detail/question-filter.pipe';
 import { AnswerDetailDialogPanel } from './components/quiz/category-question-detail/answer-dialog/answer-detail-dialog-panel';
 import { QuestionDetailDialogPanel } from './components/quiz/category-question-detail/question-dialog/question-detail-dialog-panel';
-import { AddLevelComponent } from './components/word/level/add-level/add-level.component';
 import { AddWordComponent } from './components/word/word/add-word/add-word.component';
 import { LevelComponent } from './components/word/level/level.component';
 import { WordComponent } from './components/word/word/word.component';
@@ -57,7 +57,7 @@ import { WordService } from '../../service/word.service';
     QuestionFilterPipe,
     AnswerDetailDialogPanel,
     QuestionDetailDialogPanel,
-    AddLevelComponent,
+    AddLevelDialogPanelComponent,
     AddWordComponent,
     LevelComponent,
     WordComponent,
@@ -70,7 +70,8 @@ import { WordService } from '../../service/word.service';
   bootstrap: [],
   entryComponents: [
     AnswerDetailDialogPanel,
-    QuestionDetailDialogPanel
+    QuestionDetailDialogPanel,
+    AddLevelDialogPanelComponent
   ]
 })
 export class WordLayoutModule { }

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import com.word.model.Word;
-
 public class LevelDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -16,7 +14,7 @@ public class LevelDto implements Serializable {
 	private Date updatedDate;
 	private String updatedBy;
 	private boolean active;
-	private List<Word> words;
+	private List<WordDto> words;
 
 	public LevelDto() {
 	}
@@ -77,11 +75,11 @@ public class LevelDto implements Serializable {
 		this.active = active;
 	}
 
-	public List<Word> getWords() {
+	public List<WordDto> getWords() {
 		return words;
 	}
 
-	public void setWords(List<Word> words) {
+	public void setWords(List<WordDto> words) {
 		this.words = words;
 	}
 

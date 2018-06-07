@@ -1,18 +1,19 @@
+import { Level } from './../../../../../../model/Level';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NotificationsService } from 'angular2-notifications';
 
-@Component({
-  selector: 'app-add-level',
-  templateUrl: './add-level.component.html',
-  styleUrls: ['./add-level.component.css']
+@Component({ 
+  selector: 'app-add-level-dialog-panel',
+  templateUrl: './add-level-dialog-panel.component.html',
+  styleUrls: ['./add-level-dialog-panel.component.css']
 })
-export class AddLevelComponent {
+export class AddLevelDialogPanelComponent {
  
  
   constructor(
-    public dialogRef: MatDialogRef<AddLevelComponent>,
+    public dialogRef: MatDialogRef<AddLevelDialogPanelComponent>,
     private notificationsService: NotificationsService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -21,12 +22,10 @@ export class AddLevelComponent {
     }
   
     checkout() {
-      
-      if(this.data.question) {
+      if(this.data.name) {
          this.dialogRef.close(this.data);
       } else {
-        this.notificationsService.warn('Warning','Soru alanı boş geçilemez.');
+        this.notificationsService.warn('Warning','Level tanımı giriniz.');
       }
     }
-
 }

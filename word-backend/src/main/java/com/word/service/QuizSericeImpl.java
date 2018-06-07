@@ -17,7 +17,7 @@ import com.word.dao.IQuestionDao;
 import com.word.dto.AnswerDto;
 import com.word.dto.CategoryDto;
 import com.word.dto.QuestionDto;
-import com.word.factory.Factory;
+import com.word.factory.QuizFactory;
 import com.word.model.Answer;
 import com.word.model.Category;
 import com.word.model.Question;
@@ -38,7 +38,7 @@ public class QuizSericeImpl implements IQuizSerice {
 	private IAnswerDao answerDao;
 	
 	@Autowired
-	private Factory quizFactory;
+	private QuizFactory quizFactory;
 
 	@Override
 	public boolean save(CategoryDto categoryDto) throws Exception {

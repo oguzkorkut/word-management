@@ -16,7 +16,6 @@ import { CookieService } from 'ngx-cookie';
 @Injectable()
 export class CategoryService {
 
-  private serviceUrl = CONSTANTS.server + '/services/rest-api/user';
   private access_token: string;
   private headers: Headers = new Headers();
   constructor(private http: Http, private _cookieService: CookieService) {
