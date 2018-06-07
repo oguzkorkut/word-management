@@ -1,0 +1,8 @@
+.word-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.word-container>* {
+    width: 100%;
+}

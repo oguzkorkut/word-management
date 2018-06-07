@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -119,7 +120,7 @@ public class WordRestService {
 			} else {
 				response.setStatus(false);
 				response.setMessage("Kelime kayitlı olduğu için işlem devam ettirilemiyor.");
-				logger.debug("Kayitli seviye. Kelime:" + wordDto.getName());
+				logger.debug("Kayitli kelime. Kelime:" + wordDto.getName());
 			}
 
 		} catch (Exception e) {
@@ -129,6 +130,51 @@ public class WordRestService {
 		}
 
 		logger.debug("saveWord REST method completed.");
+		return Response.ok(response).build();
+	}
+	
+	@PUT
+	@Path("/update")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response update(@Context HttpServletRequest request) {
+		logger.debug("update word REST method begins.");
+		ObjectMapper mapper = new ObjectMapper();
+		ReturnDTO response = new ReturnDTO();
+		try {
+			String jsonData = IOUtils.toString(request.getInputStream());
+			logger.debug("Request:\n" + jsonData);
+			JSONObject jsonObject = new JSONObject(jsonData);
+			WordDto wordDto = mapper.readValue(jsonObject.toString(), WordDto.class);
+
+			if (wordDto == null) {
+				response.setStatus(false);
+				response.setMessage("Kelime objesi null");
+				logger.info("Kelime objesi null");
+			}
+
+			WordDto dto = wordSerice.getWordByName(wordDto.getName());
+
+			if (dto == null) {
+				wordSerice.update(wordDto);
+
+				response.setStatus(true);
+				response.setMessage("Kelime güncellendi. Güncel kelime:" + wordDto.getName());
+				logger.info("Kelime güncellendi. Güncel kelime id:" + wordDto.getId() + " kelime:" + wordDto.getName());
+			} else {
+				response.setStatus(false);
+				response.setMessage("Kelime kayitlı olduğu için işlem devam ettirilemiyor.");
+				logger.debug("Kayitli kelime. Kelime id:" + wordDto.getId() + " kelime:" + wordDto.getName());
+			}
+
+		} catch (Exception e) {
+			logger.error(e, e);
+			response.setStatus(false);
+			response.setMessage("Kelime günellemesi sırasında bir hata olustu. Hata:" + e.getMessage());
+		}
+
+		logger.debug("update word REST method completed.");
 		return Response.ok(response).build();
 	}
 

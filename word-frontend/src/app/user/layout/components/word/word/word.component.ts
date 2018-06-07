@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-word',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WordComponent implements OnInit {
 
-  constructor() { }
+  public loading = false;
+
+  constructor( private route: ActivatedRoute) { }
 
   ngOnInit() {
-  }
+    console.log("add-role");
+    this.route.params.subscribe(params => {
+      this.loading = true;
 
+      this.loading = false;
+      
+    });
+  }
 }

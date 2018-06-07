@@ -1,3 +1,4 @@
+import { UpdateDialogPanelComponent } from './../update-dialog-panel/update-dialog-panel.component';
 import { Word } from './../../../../../../model/Word';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -112,10 +113,47 @@ export class WordsOfLevelsComponent implements OnInit {
     });
   }
 
-  update(id:number){
+  openUpdateDialogPanel(word:Word){
+    var name = word.name;
+
+    let tempWord = new Word;
+    
+    tempWord.id = word.id;
+    tempWord.name = word.name;
+    tempWord.active = word.active;
+
+    let dialogRef = this.dialog.open(UpdateDialogPanelComponent, {
+      width: '400px',
+      data: tempWord
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+       console.log(result);
+       this.update(result)
+      }
+    });
 
   }
 
+  update(word: Word){
+    this.wordService.updateWord(word).subscribe(
+      response  => {
+        console.log(response )
+        if(response.status){
+          this.notificationsService.info('Successfull','word is updated!');
+          this.getWordsByLevel();
+        } else{
+          this.notificationsService.error('Error',response.message);
+        }
+        
+    },
+    error =>{
+      console.log(error )
+      this.notificationsService.error('Error',error);
+    });
+  }
   
 
 

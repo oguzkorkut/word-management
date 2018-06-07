@@ -77,6 +77,14 @@ export class WordService {
       return this.http.delete(u, requestOptions).map(response => response.json()).catch(error => this.handleError(error));
     }
 
+    updateWord(word: Word): Observable<ReturnModel>{
+      
+      var requestOptions =new RequestOptions({headers:this.headers});
+  
+      var u = this.url + '/word/update';
+      return this.http.put(u, word, requestOptions).map(response => response.json()).catch(error => this.handleError(error));
+    }
+
     private handleError(error: any): Promise<any> {
       console.error('An error occurred', error);
       if (error.status === 401) {

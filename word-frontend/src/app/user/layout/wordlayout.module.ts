@@ -33,6 +33,7 @@ import { WordsOfLevelsComponent } from './components/word/word/words-of-levels/w
 import { LevelFilterPipe } from '../../pipe/level-filter.pipe';
 import { QuestionFilterPipe } from '../../pipe/question-filter.pipe';
 import { WordFilterPipe } from '../../pipe/word-filter.pipe';
+import { UpdateDialogPanelComponent } from './components/word/word/update-dialog-panel/update-dialog-panel.component';
 //import { CategoryQuestionDetailComponent } from './components/quiz/category-question-detail/category-question-detail.component';
 
 @NgModule({
@@ -67,7 +68,8 @@ import { WordFilterPipe } from '../../pipe/word-filter.pipe';
     WordsOfLevelsComponent,
     LevelFilterPipe,
     QuestionFilterPipe,
-    WordFilterPipe
+    WordFilterPipe,
+    UpdateDialogPanelComponent
   ],
   providers: [
     WordService
@@ -76,7 +78,8 @@ import { WordFilterPipe } from '../../pipe/word-filter.pipe';
   entryComponents: [
     AnswerDetailDialogPanel,
     QuestionDetailDialogPanel,
-    AddLevelDialogPanelComponent
+    AddLevelDialogPanelComponent,
+    UpdateDialogPanelComponent
   ]
 })
 export class WordLayoutModule { }

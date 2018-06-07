@@ -117,9 +117,13 @@ public class WordSericeImpl implements IWordSerice {
 		if (wordDto == null) {
 			return false;
 		}
-		Word word = wordFactory.convertWordDtoToWord(wordDto);
 		
-		wordDao.update(word);
+		Word w = wordDao.getWordsById(wordDto.getId());
+		
+		w.setName(wordDto.getName());
+		w.setActive(wordDto.isActive());
+		
+		wordDao.update(w);
 		
 		return true;
 	}

@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Update Word</h1>
+<div mat-dialog-content>
+    <!--<mat-form-field>
+        <input matInput [(ngModel)]="data.categoryId">
+    </mat-form-field>-->
+
+    <div class="word-container">
+        <mat-form-field [hideRequiredMarker]="true">
+            <textarea matInput [(ngModel)]="data.name" required></textarea>
+        </mat-form-field>
+    </div>
+</div>
+
+<div mat-dialog-actions class="pull-right">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="checkout()" cdkFocusInitial>Update</button>
+    <!-- <button mat-button [mat-dialog-close]="checkout()" cdkFocusInitial>Save</button>-->
+</div>
