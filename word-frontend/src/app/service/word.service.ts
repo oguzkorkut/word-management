@@ -10,6 +10,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class WordService {
 
+  delete(arg0: any): any {
+    throw new Error("Method not implemented.");
+  }
     private serviceUrl = CONSTANTS.server + '/services/rest-api/user';
     private access_token: string;
     private headers: Headers = new Headers();
