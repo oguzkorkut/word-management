@@ -1,17 +1,27 @@
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' ,fullScreenBackdrop: true}"></ngx-loading>
 <div *ngIf="true">
-    <div class="form-group clearfix"></div>
+
+    <div class="form-group clearfix">
+
+    </div>
     <div class="table-responsive">
+
         <mat-card>
             <mat-card-title>Questions</mat-card-title>
+
             <mat-card-content>
                 <mat-card>
                     <mat-card-content>
+                        <div class="">
+                            <button routerLink="/user/category-operations/categories" class="btn btn-xs btn-primary pull-left">
+                                <i class="glyphicon glyphicon glyphicon-arrow-left"></i>
+                                Back Categories
+                            </button>
+                        </div>
                         <div *ngIf="categoryId > 0">
                             <button mat-button (click)="openQuestionDialog(categoryId)" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>
                                         Add Question</button>
                         </div>
-
                         <mat-form-field class="search-field-full-width">
                             <textarea matInput placeholder="type something..." [(ngModel)]="filterText" #filterTextArea></textarea>
                         </mat-form-field>
