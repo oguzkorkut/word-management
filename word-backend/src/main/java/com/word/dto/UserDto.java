@@ -14,6 +14,7 @@ public class UserDto implements Serializable {
 	private String email;
 	private String username;
 	private String phone;
+	private int level;
 	private String createdBy;
 	private Date updatedDate;
 	private String updatedBy;
@@ -77,6 +78,14 @@ public class UserDto implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public String getCreatedBy() {

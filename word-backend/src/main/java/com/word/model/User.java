@@ -48,6 +48,9 @@ public class User implements Serializable {
 	@Column(name = "phone")
 	private String phone;
 
+	@Column(name = "level")
+	private int level;
+
 	@Column(name = "created_user")
 	private String createdBy;
 
@@ -123,6 +126,14 @@ public class User implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public String getCreatedBy() {

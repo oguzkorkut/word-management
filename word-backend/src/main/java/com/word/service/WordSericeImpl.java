@@ -1,6 +1,7 @@
 package com.word.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.util.CollectionUtils;
 
 import com.word.dao.ILevelDao;
 import com.word.dao.IWordDao;
+import com.word.dto.GameDto;
 import com.word.dto.WordDto;
 import com.word.factory.WordFactory;
 import com.word.model.Level;
@@ -23,6 +25,9 @@ import com.word.model.Word;
 public class WordSericeImpl implements IWordSerice {
 
 	private static final Logger logger = LogManager.getLogger(WordSericeImpl.class);
+	
+	@Autowired
+	private IWordShuffleService wordShuffleService;
 	
 	@Autowired
 	private WordFactory wordFactory;
@@ -133,8 +138,56 @@ public class WordSericeImpl implements IWordSerice {
 		Integer id = wordDao.saveWordLevel(levelId, wordId);
 		return id;
 	}
-
 	
-
+	
+	/*
+	 * Gelen level ve üst bir kaç level geri döndürülür.
+	 */
+	@Override
+	public List<GameDto> getWordsByGameLevel(int level) throws Exception {
+		
+		List<GameDto> gameDtos = new ArrayList<GameDto>();
+		
+		GameDto gameDto = null;
+		
+		wordShuffleService.initiliaze();
+		
+		List<Word> words = null;
+		List<WordDto>  wordDtos = null;
+		for (int i = 0; i < 3; i++) {
+			words = wordDao.getWordsByLevel(level + i);
+			
+			if (CollectionUtils.isEmpty(words)) {
+				return new ArrayList<GameDto>();
+			}
+			
+			wordDtos = new ArrayList<WordDto>();
+			
+			WordDto wordDto = null;
+			for (Word word : words) {
+				
+				wordDto = wordFactory.convertWordToWordDto(word);
+				wordDtos.add(wordDto);
+				
+				if (wordDtos.size() == 5) {
+					break;
+				}
+			}
+			
+			wordShuffleService.shuffle(wordDtos);
+			
+			gameDto = new GameDto();
+			
+			gameDto.setLevel(level + i);
+			gameDto.setPassed(false);
+			gameDto.setWord(wordDtos);
+			gameDto.setWordPositions(wordShuffleService.getWordPositions());
+			gameDto.setWords(wordShuffleService.getWords());
+			
+			gameDtos.add(gameDto);
+		}
+		
+		return gameDtos;
+	}
 
 }

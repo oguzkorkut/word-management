@@ -61,7 +61,7 @@ export class WordLayoutComponent implements OnInit {
   async init() {
     this.loading = true;
     await this.getFunction();
-    this.username = "sa";
+    this.username = this._cookieService.get("username");
     this.route.firstChild.params.subscribe(params => {
       this.operationName = params.operationName;
     });

@@ -28,6 +28,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.word.dto.GameDto;
 import com.word.dto.LevelDto;
 import com.word.dto.ReturnDTO;
 import com.word.dto.WordDto;
@@ -246,6 +247,34 @@ public class WordRestService {
 		}
 
 		logger.debug("getWordsByLevel REST method completed.");
+		return Response.ok(response).build();
+	}
+	
+	@GET
+	@Path("/game/getWordsByLevel")
+	@Produces(MediaType.APPLICATION_JSON)
+	//@PreAuthorize("hasAuthority('ADMIN')")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response getWordsByGameLevel(@Context HttpServletRequest request, @QueryParam("level") int levelId) {
+		logger.debug("getWordsByGameLevel REST method begins. level:" + levelId);
+		ReturnDTO response = new ReturnDTO();
+
+		try {
+			if (levelId != 0) {
+				List<GameDto> gameDtos = wordSerice.getWordsByGameLevel(levelId);
+				response.setStatus(true);
+				response.setResult(gameDtos);
+			} else {
+				response.setStatus(false);
+				response.setMessage("Seviye 0 olamaz.");
+			}
+		} catch (Exception e) {
+			logger.error(e, e);
+			response.setStatus(false);
+			response.setMessage(e.getMessage());
+		}
+
+		logger.debug("getWordsByGameLevel REST method completed.");
 		return Response.ok(response).build();
 	}
 

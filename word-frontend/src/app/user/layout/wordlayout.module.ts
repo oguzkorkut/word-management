@@ -34,6 +34,7 @@ import { LevelFilterPipe } from '../../pipe/level-filter.pipe';
 import { QuestionFilterPipe } from '../../pipe/question-filter.pipe';
 import { WordFilterPipe } from '../../pipe/word-filter.pipe';
 import { UpdateDialogPanelComponent } from './components/word/word/update-dialog-panel/update-dialog-panel.component';
+import { SpaceFilterPipe } from '../../pipe/space-filter.pipe';
 //import { CategoryQuestionDetailComponent } from './components/quiz/category-question-detail/category-question-detail.component';
 
 @NgModule({
@@ -66,10 +67,11 @@ import { UpdateDialogPanelComponent } from './components/word/word/update-dialog
     WordComponent,
     LevelMappingComponent,
     WordsOfLevelsComponent,
+    UpdateDialogPanelComponent,
     LevelFilterPipe,
     QuestionFilterPipe,
     WordFilterPipe,
-    UpdateDialogPanelComponent
+    SpaceFilterPipe
   ],
   providers: [
     WordService

@@ -68,7 +68,7 @@ export class WordsOfLevelsComponent implements OnInit {
 
       if(control){
         var word = new Word();
-        word.name = inputText.value;
+        word.name = inputText.value.split(' ').join('');
         //word.level = this.level;
         word.active = true;
   
