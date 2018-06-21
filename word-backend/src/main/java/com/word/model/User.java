@@ -1,6 +1,7 @@
 package com.word.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonManagedReference;
+import org.springframework.util.CollectionUtils;
 
 /**
  * The persistent class for the pm_user database table.
@@ -169,6 +171,9 @@ public class User implements Serializable {
 	}
 
 	public List<Role> getRoles() {
+		if (CollectionUtils.isEmpty(roles)) {
+			roles = new ArrayList<Role>();
+		}
 		return roles;
 	}
 

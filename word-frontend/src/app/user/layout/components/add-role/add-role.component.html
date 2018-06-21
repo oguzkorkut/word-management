@@ -2,6 +2,79 @@
 <div *ngIf="true">
     <div class="form-group clearfix"></div>
     <div class="table-responsive">
-        Add Role
+        <mat-card>
+            <mat-card-title>Roles</mat-card-title>
+            <mat-card-content>
+                <mat-card>
+                    <mat-card-content>
+                        <div>
+                            <div class="row">
+                                <!-- /.col-lg-6 -->
+                                <div class="col-lg-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" #roleText (keyup.enter)="add(roleText)">
+
+                                        <span class="input-group-btn">
+                                                  <button mat-button (click)="add(roleText)" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>
+                                                    Add</button>
+                                                </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                                <!-- /.col-lg-6 -->
+                            </div>
+
+
+                        </div>
+
+                        <mat-form-field class="search-field-full-width">
+                            <textarea matInput placeholder="type something..." [(ngModel)]="filterText" #filterTextArea></textarea>
+                        </mat-form-field>
+
+                        <div *ngIf="filterTextArea">
+                            You searched for <strong> {{filterText}}</strong>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+
+                <div class="panel panel-default" *ngIf="roles.length>0;else roleEmptyTmpl">
+                    <div class="panel-heading">Role</div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let role of roles | wordFilter: filterText  | slice:(pager.currentPage-1)*pager.pageSize:((pager.currentPage-1)*pager.pageSize)+pager.pageSize ; let i=index">
+                                <td>{{ i + 1 }}</td>
+                                <td>
+                                    {{ role.name }}
+                                </td>
+                                <td><button class="btn btn-danger" (click)="delete(role.id)">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav aria-label="Page Navigation">
+                    <ul class="pagination">
+                        <li *ngFor="let page of pager.pageList" [class.active]="page===pager.currentPage">
+                            <a style="cursor: pointer;" (click)="setPage(page)">{{page}}</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </mat-card-content>
+        </mat-card>
+
+        <ng-template #roleEmptyTmpl>
+            <div class="alert alert-danger" role="alert">
+                Role is empty!
+            </div>
+        </ng-template>
     </div>
 </div>

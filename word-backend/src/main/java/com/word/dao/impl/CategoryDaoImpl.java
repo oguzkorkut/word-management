@@ -1,4 +1,4 @@
-package com.word.dao;
+package com.word.dao.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.word.dao.ICategoryDao;
 import com.word.model.Category;
 import com.word.repository.CategoryRepository;
 

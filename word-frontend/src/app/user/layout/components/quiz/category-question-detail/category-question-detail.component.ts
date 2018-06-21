@@ -37,7 +37,7 @@ export class CategoryQuestionDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.loading = true;
+     
       this.operationName = params.operationName;
       console.log(this.operationName);
 
@@ -45,32 +45,39 @@ export class CategoryQuestionDetailComponent implements OnInit {
         this.categoryId = params['id'];
         this.getQuestionsByCategoryId(params['id']);
       }
-
-      this.loading = false;
       
     });
     
   }
   getQuestionsByCategoryId(id: number){
+    this.loading = true;
+   
     this.categoryService.getQuestionsByCategoryId(id).subscribe( response  => {
       console.log(response );
       this.questions = response.result as Question[];
 
       this.pager = this.getPager(this.questions.length,1,3);
+      
+      this.loading = false;
     },
     error =>{
+      this.loading = false;
       console.log(error )
     });
   }
 
   addQuestion(question: Question){
+  	this.loading = true;
+  
     this.categoryService.saveQuestion(question).subscribe(
       response  => {
         console.log(response )
         this.notificationsService.info('Successfull','Question is saved!');
         this.getQuestionsByCategoryId(this.categoryId);
+        this.loading = false;
     },
     error =>{
+      this.loading = false;
       console.log(error )
     });
   }

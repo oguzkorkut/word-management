@@ -1,20 +1,26 @@
 package com.word.service;
 
 import java.util.List;
-import java.util.UUID;
 
-import com.word.model.User;
-
-
+import com.word.dto.RoleDto;
+import com.word.dto.UserDto;
 
 public interface IUserService {
 
-	public User findUserByUsername(String userName);
+	public UserDto getUserByUsername(String userName);
 
-	public List<User> findAllUsers();
+	public List<UserDto> getAllUsers();
 
-	public User saveUser(User user);
+	public UserDto saveUser(UserDto userDto);
 
-	public boolean deleteById(UUID id);
+	public boolean deleteById(Integer id);
+	
+	public RoleDto saveRole(RoleDto roleDto);
+	
+	public RoleDto getRoleByRoleName(String name);
+	
+	public List<RoleDto> getRoles();
+	
+	public boolean deleteRoleById(Integer id);
 	
 }

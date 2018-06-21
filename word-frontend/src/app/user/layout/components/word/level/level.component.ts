@@ -29,18 +29,14 @@ export class LevelComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.loading = true;
-     
-
+    
       if(params['id']){
         this.levelId = params['id'];
         this.getLevelssByLevelId(params['id']);
       } else{
         this.getAllLevels();
       }
-
-      this.loading = false;
-      
+ 
     });
   }
 
@@ -82,27 +78,40 @@ export class LevelComponent implements OnInit {
 
 
   getLevelssByLevelId(id:number){
+    this.loading = true;
+    
     this.wordService.getLevelById(id).subscribe( response  => {
       console.log(response );
       this.levels = response.result as Level[];
 
       this.pager = this.getPager(this.levels.length,1,3);
+      
+      this.loading = false;
     },
     error =>{
+	  this.loading = false;    
       console.log(error);
       this.notificationsService.error('Error',error);
     });
   }
 
   getAllLevels(){
+  	this.loading = true;
+  	
     this.wordService.getLevels().subscribe( response  => {
       console.log(response );
       if(response.result){
         this.levels = response.result as Level[];
         this.pager = this.getPager(this.levels.length,1,3);
-      }      
+      }  
+      
+      if(!response.status) {
+       this.notificationsService.error('Error',response.message);
+      }
+      this.loading = false;   
     },
     error =>{
+      this.loading = false;
       console.log(error);
       this.notificationsService.error('Error',error);
     });

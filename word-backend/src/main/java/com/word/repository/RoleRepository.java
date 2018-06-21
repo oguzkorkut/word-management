@@ -9,14 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import com.word.model.Role;
 import com.word.model.User;
 
 @Repository
 @Transactional
-public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecificationExecutor<User> {
+public interface RoleRepository extends JpaRepository<Role, Integer>, JpaSpecificationExecutor<User> {
 
-	public User findByUsername(String username);
-	
-//	public Long deleteById(UUID id);
-	
+	public Role findByName(String name);
 }

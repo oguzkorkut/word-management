@@ -30,7 +30,7 @@ export class WordsOfLevelsComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-      this.loading = true;
+     
       this.level = params.level;
       console.log(this.level);
 
@@ -39,13 +39,20 @@ export class WordsOfLevelsComponent implements OnInit {
   }
 
   getWordsByLevel(){
+  	this.loading = true;
+  	
     this.wordService.getWordsByLevel(this.level).subscribe( response  => {
       console.log(response );
       if(response.result){
         this.words = response.result as Word[];
         this.pager = this.getPager(this.words.length,1,3);
-        this.loading = false;
-      }      
+      } 
+      
+      if(!response.status) {
+       this.notificationsService.error('Error',response.message);
+      }
+         
+      this.loading = false;
     },
     error =>{
       this.loading = false;
@@ -72,6 +79,8 @@ export class WordsOfLevelsComponent implements OnInit {
         //word.level = this.level;
         word.active = true;
   
+  		this.loading = true;
+  		
         this.wordService.addWord(this.level, word).subscribe(
           response  => {
             console.log(response )
@@ -81,9 +90,12 @@ export class WordsOfLevelsComponent implements OnInit {
             } else{
               this.notificationsService.error('Error',response.message);
             }
+            this.loading = false;
             
         },
         error =>{
+          this.loading = false;
+          
           console.log(error )
           this.notificationsService.error('Error',error);
         });
@@ -91,11 +103,13 @@ export class WordsOfLevelsComponent implements OnInit {
         inputText.value = '';
       }
     } else {
-      this.notificationsService.warn('Warning','Boş kayıt eklenemez.')
+      this.notificationsService.warn('Warning','Boş kayıt eklenemez.');
     }
   }
 
   delete(id:number){
+  	this.loading = true;
+  	
     this.wordService.deleteWord(id).subscribe(
       response  => {
         console.log(response )
@@ -105,9 +119,11 @@ export class WordsOfLevelsComponent implements OnInit {
         } else{
           this.notificationsService.error('Error',response.message);
         }
-        
+        this.loading = false;
     },
     error =>{
+      this.loading = false;
+      
       console.log(error )
       this.notificationsService.error('Error',error);
     });

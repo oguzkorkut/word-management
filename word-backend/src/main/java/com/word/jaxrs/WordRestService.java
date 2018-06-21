@@ -191,7 +191,7 @@ public class WordRestService {
 			wordSerice.delete(id);
 
 			response.setStatus(true);
-			response.setMessage("Kayit basarili.");
+			response.setMessage("Silme basarili.");
 			logger.info("Kelime basarili bir sekilde silindi. Silinen kelime id:" + id);
 		} catch (Exception e) {
 			logger.error(e, e);

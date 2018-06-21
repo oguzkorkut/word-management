@@ -1,4 +1,4 @@
-package com.word.dao;
+package com.word.dao.impl;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.word.dao.ILevelDao;
+import com.word.dao.IWordDao;
 import com.word.model.Level;
 import com.word.model.Word;
 import com.word.repository.WordRepository;

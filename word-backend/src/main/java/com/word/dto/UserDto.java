@@ -1,8 +1,11 @@
 package com.word.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.util.CollectionUtils;
 
 public class UserDto implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -121,6 +124,9 @@ public class UserDto implements Serializable {
 	}
 
 	public List<RoleDto> getRoles() {
+		if (CollectionUtils.isEmpty(roles)) {
+			roles = new ArrayList<RoleDto>();
+		}
 		return roles;
 	}
 
