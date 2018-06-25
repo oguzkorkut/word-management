@@ -2,6 +2,62 @@
 <div *ngIf="true">
     <div class="form-group clearfix"></div>
     <div class="table-responsive">
-        Add User
+        <mat-card>
+            <mat-card-title>Users</mat-card-title>
+            <mat-card-content>
+                <mat-card>
+                    <mat-card-content>
+                        <button mat-button (click)="openUserDialog()" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i>
+                                            Add User</button>
+
+                        <mat-form-field class="search-field-full-width">
+                            <textarea matInput placeholder="type something..." [(ngModel)]="filterText" #filterTextArea></textarea>
+                        </mat-form-field>
+
+                        <div *ngIf="filterTextArea">
+                            You searched for <strong> {{filterText}}</strong>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+
+                <div class="panel panel-default" *ngIf="users.length>0;else userEmptyTmpl">
+                    <div class="panel-heading">User</div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users | wordFilter: filterText  | slice:(pager.currentPage-1)*pager.pageSize:((pager.currentPage-1)*pager.pageSize)+pager.pageSize ; let i=index">
+                                <td>{{ i + 1 }}</td>
+                                <td>
+                                    {{ user.name }}
+                                </td>
+                                <td><button class="btn btn-danger" (click)="delete(user.id)">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <nav aria-label="Page Navigation">
+                    <ul class="pagination">
+                        <li *ngFor="let page of pager.pageList" [class.active]="page===pager.currentPage">
+                            <a style="cursor: pointer;" (click)="setPage(page)">{{page}}</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </mat-card-content>
+        </mat-card>
+
+        <ng-template #userEmptyTmpl>
+            <div class="alert alert-danger" role="alert">
+                User is empty!
+            </div>
+        </ng-template>
     </div>
 </div>

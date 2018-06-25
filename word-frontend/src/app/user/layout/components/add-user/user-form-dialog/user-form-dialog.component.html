@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>Add Question</h1>
+<div mat-dialog-content>
+    <!--<mat-form-field>
+        <input matInput [(ngModel)]="data.categoryId">
+    </mat-form-field>-->
+
+    <div class="user-form-container">
+        <!-- <mat-form-field>
+            <input matInput [(ngModel)]="data.categoryId">
+        </mat-form-field>-->
+
+        <mat-form-field [hideRequiredMarker]="true">
+            <textarea matInput [(ngModel)]="data.firstname" placeholder="First Name" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field [hideRequiredMarker]="true">
+            <textarea matInput [(ngModel)]="data.surname" placeholder="Last Name" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field [hideRequiredMarker]="true">
+            <textarea matInput [(ngModel)]="data.username" placeholder="User Name" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Enter your email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <!-- <div class="input-group">
+            <input [textMask]="{mask: mobileNumberMask}" [(ngModel)]="mobileNumber" type="text" class="form-control" />
+        </div>-->
+
+        <div class="form-group">
+            <label for="exampleInputPhone1">Phone Number</label>
+            <input [textMask]="{mask: mask}" [(ngModel)]="data.phone" type="text" class="form-control" required/>
+        </div>
+
+        <mat-form-field>
+            <mat-select placeholder="State" [(value)]="data.active">
+                <!--<mat-option value="option">Option</mat-option>-->
+                <mat-option value="1">Active</mat-option>
+                <mat-option value="0">Inactive</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Role" [(value)]="data.active">
+                <!--<mat-option value="option">Option</mat-option>-->
+                <mat-option value="1">Active</mat-option>
+                <mat-option value="0">Inactive</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+<div mat-dialog-actions class="pull-right">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="checkout()" cdkFocusInitial>Save</button>
+    <!-- <button mat-button [mat-dialog-close]="checkout()" cdkFocusInitial>Save</button>-->
+</div>

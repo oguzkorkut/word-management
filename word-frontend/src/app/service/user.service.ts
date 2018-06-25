@@ -46,6 +46,26 @@ export class UserService {
       .catch(error => this.handleError(error));
   }
 
+   getAllUsers(): Observable<ReturnModel>{
+         
+    var localHeaders = new Headers();
+    localHeaders.append('Authorization', 'Bearer ' + this.access_token);
+    localHeaders.append('Content-Type', 'application/json');
+    localHeaders.append('Accept','application/json');
+    
+    var requestOptions =new RequestOptions({headers:localHeaders});
+
+    return this.http.get(this.serviceUrl + '/user/getUsers', requestOptions).map(response => response.json()).catch(error => this.handleError(error));
+  }
+
+  deleteUser(id: number): Observable<ReturnModel>{
+      
+    var requestOptions =new RequestOptions({headers:this.headers});
+
+    var u = this.serviceUrl + '/user/delete/' + id ;
+    return this.http.delete(u, requestOptions).map(response => response.json()).catch(error => this.handleError(error));
+  }
+
   getRoles(): Observable<ReturnModel>{
          
     var localHeaders = new Headers();
@@ -57,7 +77,7 @@ export class UserService {
 
     return this.http.get(this.serviceUrl + '/role/getRoles', requestOptions).map(response => response.json()).catch(error => this.handleError(error));
   }
-
+  
   addRole(role: Role): Observable<ReturnModel>{
         
     var requestOptions =new RequestOptions({headers:this.headers});

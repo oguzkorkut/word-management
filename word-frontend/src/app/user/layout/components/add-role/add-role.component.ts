@@ -16,8 +16,6 @@ export class AddRoleComponent implements OnInit {
 
   filterText: string;
 
-  level: number;
-
   pager: AppPager = new AppPager();
 
   roles: Role[] = [];

@@ -35,6 +35,8 @@ import { QuestionFilterPipe } from '../../pipe/question-filter.pipe';
 import { WordFilterPipe } from '../../pipe/word-filter.pipe';
 import { UpdateDialogPanelComponent } from './components/word/word/update-dialog-panel/update-dialog-panel.component';
 import { SpaceFilterPipe } from '../../pipe/space-filter.pipe';
+import { UserFormDialogComponent } from './components/add-user/user-form-dialog/user-form-dialog.component';
+import { TextMaskModule } from 'angular2-text-mask';
 //import { CategoryQuestionDetailComponent } from './components/quiz/category-question-detail/category-question-detail.component';
 
 @NgModule({
@@ -45,7 +47,7 @@ import { SpaceFilterPipe } from '../../pipe/space-filter.pipe';
     MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule,
     MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule,
     MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule,
-    MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule
+    MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule,TextMaskModule
   ],
   declarations: [
     DashboardComponent,
@@ -71,7 +73,8 @@ import { SpaceFilterPipe } from '../../pipe/space-filter.pipe';
     LevelFilterPipe,
     QuestionFilterPipe,
     WordFilterPipe,
-    SpaceFilterPipe
+    SpaceFilterPipe,
+    UserFormDialogComponent
   ],
   providers: [
     WordService
@@ -81,7 +84,8 @@ import { SpaceFilterPipe } from '../../pipe/space-filter.pipe';
     AnswerDetailDialogPanel,
     QuestionDetailDialogPanel,
     AddLevelDialogPanelComponent,
-    UpdateDialogPanelComponent
+    UpdateDialogPanelComponent,
+    UserFormDialogComponent
   ]
 })
 export class WordLayoutModule { }
