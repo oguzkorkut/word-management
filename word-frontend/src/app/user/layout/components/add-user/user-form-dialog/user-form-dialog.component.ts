@@ -1,3 +1,4 @@
+import { Role } from './../../../../../model/role';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NotificationsService } from 'angular2-notifications';
@@ -32,21 +33,53 @@ export class UserFormDialogComponent {
       this.dialogRef.close();
     }
   
-    checkout() {
+    checkout(phoneInput: HTMLInputElement) {
 
-      if(!this.data.firstname){
-        this.notificationsService.warn('Warning','İsim giriniz.');
+      var control = true;
+      if(typeof this.data.active === "undefined"){ 
+        this.data.active = true;
       }
-
-      if(!this.data.lastname){
+      if(!this.data.firstname){
+        control = false;
         this.notificationsService.warn('Warning','İsim giriniz.');
+      } 
+      if(!this.data.surname){
+        control = false;
+        this.notificationsService.warn('Warning','Soyad giriniz.');
+      } 
+      if(!this.data.surname){
+        control = false;
+        this.notificationsService.warn('Warning','İsim giriniz.');
+      } 
+      if(this.email.status != "VALID") {
+        control = false;
+        this.notificationsService.warn('Warning','Geçerli bir e-posta adresi giriniz.');
+      } 
+      if(!this.data.phone){
+        control = false;
+        this.notificationsService.warn('Warning','Telefon numarası giriniz.');
+      } else {
+        if(this.data.phone.split("-")[1].split("_").length > 1){
+          control = false;
+          this.notificationsService.warn('Warning','Telefon numarası giriniz.');
+        }
+      }
+      if(!this.data.role){
+        
+        control = false;
+        this.notificationsService.warn('Warning','Rol seçiniz..');
+        
+      } else if(this.data.role){
+        var roles: Role[] = [], role= new Role;
+        role.name = this.data.role;
+        roles.push(role);
+        
+        this.data.roles = roles;
+      }
+      if(control) {
+        this.dialogRef.close(this.data);
       }
       
-      if(this.email.status === "VALID") {
-         this.dialogRef.close(this.data);
-      } else {
-        this.notificationsService.warn('Warning','Alan boş geçilemez.');
-      }
     }
 
     getErrorMessage() {

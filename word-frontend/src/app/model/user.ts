@@ -7,6 +7,6 @@ export class User{
     username: string;
     phone: string;
     email: string;
-    Role: Role[];
+    roles: Role[];
 
 }
