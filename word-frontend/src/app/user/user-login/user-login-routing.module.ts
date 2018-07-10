@@ -8,8 +8,6 @@ const routes: Routes = [
     component: UserLoginComponent
   }
 ];
-
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

@@ -60,7 +60,7 @@ export class WordLayoutComponent implements OnInit {
   }
   async init() {
     this.loading = true;
-    await this.getFunction();
+  
     this.username = this._cookieService.get("username");
     this.route.firstChild.params.subscribe(params => {
       this.operationName = params.operationName;
@@ -74,15 +74,7 @@ export class WordLayoutComponent implements OnInit {
   close() {
     this.sidenav.close();
   }
-  private async getFunction() {
-    try {
-      
-    } catch (error) {
-      this.loading = false;
-      console.log('Hata!!: ' + error);
-    }
-  }
-
+  
   createMenu(){
 
       const userSubMenuList: SubMenu[] = [

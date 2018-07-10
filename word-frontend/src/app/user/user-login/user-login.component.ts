@@ -17,6 +17,7 @@ export class UserLoginComponent implements OnInit {
   userCredential: UserCredential = { username: '', password: '' };
   isLoginCredentialCorrect = false;
   errorMessage = '';
+  
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -49,10 +50,10 @@ export class UserLoginComponent implements OnInit {
              this._cookieService.put('Token', res.access_token);
              this._cookieService.put('isLoggedin', 'true');
              this._cookieService.put('username', this.userCredential.username);
-             const that = this;
-             setTimeout(function () {
-               that.router.navigate(['/user/dashboard'], { relativeTo: that.route });
-             }, 500);
+            
+             //setTimeout(function () {
+             this.router.navigate(['/user/dashboard'], { relativeTo: this.route });
+             //}, 500);
 
            }
          )
