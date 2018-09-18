@@ -114,7 +114,7 @@ public class WordDaoImpl implements IWordDao {
 		if (logger.isTraceEnabled()) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("getWordByName ends. id: ");
-			sb.append(l.getId());
+			sb.append(l!= null ? l.getId(): null);
 			logger.trace(sb.toString());
 		}
 		

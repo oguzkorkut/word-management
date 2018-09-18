@@ -41,13 +41,12 @@ import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule, WordLayoutRoutingModule, MatTabsModule, NgxChartsModule , MatTabsModule, MatSidenavModule, MatListModule,
-    NgxChartsModule, LoadingModule, LayoutModule, MatIconModule, MatToolbarModule, MatExpansionModule, MatExpansionModule,
-    ReactiveFormsModule, MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
-    MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule,
-    MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule,
-    MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule,
-    MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule,TextMaskModule
+    CommonModule, FormsModule, LayoutModule, WordLayoutRoutingModule, MatTabsModule, NgxChartsModule ,  MatSidenavModule, MatListModule,
+    LoadingModule,  MatIconModule, MatToolbarModule, MatExpansionModule, ReactiveFormsModule, MatAutocompleteModule, MatButtonModule,
+    MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule,  
+    MatGridListModule,  MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, 
+    MatRadioModule, MatRippleModule, MatSelectModule,  MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule,
+    MatTableModule, MatTooltipModule,TextMaskModule
   ],
   declarations: [
     DashboardComponent,

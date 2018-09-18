@@ -30,6 +30,9 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
 	private static final Logger logger = LogManager.getLogger(CustomLogoutSuccessHandler.class);
 
 
+	private static final Logger logger = LogManager.getLogger(CustomLogoutSuccessHandler.class);
+
+
 	private static final String BEARER_AUTHENTICATION = "Bearer ";
 	private static final String HEADER_AUTHORIZATION = "authorization";
 
@@ -41,17 +44,13 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
 
 		logger.info("Logouted");
 		String token = request.getHeader(HEADER_AUTHORIZATION);
-
+		
 		if (token != null && token.startsWith(BEARER_AUTHENTICATION)) {
 
-			OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token.split(" ")[0]);
+			OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token.split(" ")[1]);
 
 			if (oAuth2AccessToken != null) {
 				tokenStore.removeAccessToken(oAuth2AccessToken);
-			}
-			
-			if (request.getSession().getAttribute("User") != null) {
-				request.getSession().removeAttribute("User");
 			}
 		}
 

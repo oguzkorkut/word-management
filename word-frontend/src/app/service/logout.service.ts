@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Md5 } from 'ts-md5/dist/md5';
+import { CookieService } from 'ngx-cookie';
 
 @Injectable()
 export class LogoutService {
 
     public results: string;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private _cookieService: CookieService) {
     }
 
 
@@ -17,8 +18,10 @@ export class LogoutService {
 
         const url = CONSTANTS.server + '/oauth/logout';
 
+		let access_token = this._cookieService.get('Token');
+
         const encoded = btoa(CONSTANTS.clientId + ':' + CONSTANTS.secret);
-        const basicHeader = 'Basic ' + encoded;
+        const basicHeader = 'Bearer ' + access_token;
         const headers = new Headers({
             'Content-type': 'application/x-www-form-urlencoded',
             'Authorization': basicHeader
