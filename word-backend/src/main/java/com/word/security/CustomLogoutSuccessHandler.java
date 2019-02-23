@@ -30,9 +30,6 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
 	private static final Logger logger = LogManager.getLogger(CustomLogoutSuccessHandler.class);
 
 
-	private static final Logger logger = LogManager.getLogger(CustomLogoutSuccessHandler.class);
-
-
 	private static final String BEARER_AUTHENTICATION = "Bearer ";
 	private static final String HEADER_AUTHORIZATION = "authorization";
 
